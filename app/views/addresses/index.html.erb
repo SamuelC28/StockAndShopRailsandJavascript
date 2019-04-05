@@ -1,0 +1,22 @@
+
+
+<h2>All Addresses</h2>
+<div class='user-account__left'>
+  <h1>Addresses</h1>
+  <%= link_to 'New Address', new_address_path %>
+</div>
+<div class='user-account__right'>
+  <h3>Address Book</h3>
+  <% @addresses.each do |address| %>
+    <div class='address-item'>
+      <%= address.country %>
+      <%= address.phone %>
+      <%= address.city %>
+      <%= address.receiver %>
+      <%= address.company %>
+      <div class='actions'>
+        <%= link_to 'Edit', edit_address_path(address) %> | <%= link_to 'Delete', address, method: :delete %>
+      </div>
+    </div>
+  <% end %>
+</div>

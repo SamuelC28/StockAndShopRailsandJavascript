@@ -1,0 +1,76 @@
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+ */
+ body, html {
+  background-color: #f3eded;
+}
+
+ .item-img-show {
+    max-width: 20%;
+    height: auto;
+}
+
+.info {
+  // top: 1;
+  left: 100%;
+  // transform: translate(-50%, -50%);
+  // z-index: 2;
+  // width: 80%;
+  // padding: 200px;
+}
+// .column {
+//   float: right;
+//   width: 33.33%;
+// }
+
+
+// .item-grid{
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   justify-content: center;
+// }
+
+// .item-contaianer {
+//   position: relative;
+//   display: flex;
+//   flex-flow: column nowrap;
+//   margin: 5px;
+//   padding: 20px;
+//   min-width: 200px;
+//   width: 240px;
+//   height: 150px;
+//   border: 1px solid rgba(139, 201, 241, 0.8);
+//   font-size: 20px;
+//   box-shadow: 4px 6px rgba(200,200,200,0.8);
+//   text-transform: capitalize;
+// }
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 40%;
+  padding: 20px;
+  text-align: center-left;
+}

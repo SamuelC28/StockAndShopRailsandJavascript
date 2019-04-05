@@ -1,0 +1,12 @@
+<div class="form-group">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@category) do |f| %>
+      <%= f.label :category_name %></br>
+      <%= f.text_field :category_name, required: true, autofocus: true, placeholder: "Category Nname", class: "form-control" %></br>
+      
+      <%= f.submit "Create Category", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'View All Categories!', categories_path %></br>

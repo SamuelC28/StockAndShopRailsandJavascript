@@ -1,0 +1,19 @@
+
+<br><br><br>
+<p id="notice"><%= notice %></p>
+
+# <p>
+#   <strong>Items:</strong>
+#   <%= @line_item.items %>
+# </p>
+
+<p>
+  <strong>Cart:</strong>
+  <%= @line_item.cart %>
+</p>
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %> 
+
+<%= link_to "Add one", line_item_add_path(:id => line_item), method: :post  %> 
+<%= link_to "Reduce one", line_item_reduce_path(:id => line_item), method: :post  %> 
