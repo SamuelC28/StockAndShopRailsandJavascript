@@ -1,20 +1,39 @@
 
-<br/><br/><br/>
-<h1>Sign In</h1>
+<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title ">
+						Sign In
+					</span>
+            <div class="row form-group">
+              <div class="col-md-6 col-md-offset-3">
+                <%= form_for :user, url: '/signin' do |f| %>
+                  
+                  <%= f.label :fullname, "Select your full-name" %><br/>
+                  <%= f.collection_select :fullname, User.all, :fullname, :fullname, prompt: true %><br/><br/>
 
-<div class="row form-group">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for :user, url: '/signin' do |f| %>
-      
-      <%= f.label :fullname, "Select your full-name" %><br/>
-      <%= f.collection_select :fullname, User.all, :fullname, :fullname, prompt: true %><br/><br/>
+                  <%= f.label :password %>
+                  <p><%= f.password_field :password, class: 'form-control', placeholder: "Password" %></p>
 
-      <%= f.label :password %>
-      <p><%= f.password_field :password, class: 'form-control', placeholder: "Password" %></p>
+                  <%= f.submit "Sign In", class: "btn btn-primary" %>
+                <% end %>
+              </div>
+              
+              <div class="flex-c-m">
+                <div class="login100-social-item bg1">
+                  <%= link_to 'Facebook', '/auth/facebook' %>
+                  <i class="fa fa-facebook"></i>
+                </div>
 
-      <%= f.submit "Sign In", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+                
+					    </div>
 
-  <%= link_to 'Login With Facebook', '/auth/facebook' %>
+
+
+              
+            </div>
+         </form>
+	    </div>
+		</div>
 </div>
