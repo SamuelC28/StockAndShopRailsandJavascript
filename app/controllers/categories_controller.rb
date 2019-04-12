@@ -8,8 +8,12 @@ class CategoriesController < ApplicationController
     end
 
     def show
-       
         @item = Item.new
+        
+        respond_to do |format|
+            format.html { render :show }
+            format.json {render json: @category } 
+          end
     end
 
     def new

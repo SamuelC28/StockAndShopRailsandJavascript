@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-    before_destroy :not_referenced_any_line_item
+    # before_destroy :not_referenced_any_line_item
     default_scope { order('created_at DESC') }
 
     validates_uniqueness_of :isbn
@@ -15,12 +15,11 @@ class Item < ApplicationRecord
     
     has_many :categorizations
     has_many :categories, :through => :categorizations
-    has_many :line_items
+    # has_many :line_items
     # belongs_to :cart
     belongs_to :user, optional: true
 
     has_one_attached :photo
-    has_many :line_items, dependent: :destroy ###
     # mount_uploader :image, ImageUploader
     # serialize :image, JSON #for Sqlite only
 
@@ -30,13 +29,13 @@ class Item < ApplicationRecord
 
 
 
-    def not_referenced_any_line_item
-      unless line_items.empty?
-        errors.add(:base, "Line is not present")
-        throw :abort
-      end
+    # def not_referenced_any_line_item
+    #   unless line_items.empty?
+    #     errors.add(:base, "Line is not present")
+    #     throw :abort
+    #   end
 
-    end
+    # end
  
     
 

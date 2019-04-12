@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
  
     before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+
+
     def index
         @category = Category.find_by(id: params[:id])
         # @items = Item.find_by(id: @category_id).items
@@ -10,13 +12,22 @@ class ItemsController < ApplicationController
         
     end
     
-    def show
+    def ticket
+        @address = Address.find_by(id: params[:address_id])
     end
+    
     def show
         @user= User.find_by(id: session[:id])
-        @item = Item.find_by(id: params[:id])
         @category = Category.find_by(id: params[:id])
+        @item = Item.find_by(id: params[:id])
+        
+        @address = Address.find_by(id: params[:id])
         @category = Category.new
+
+        respond_to do |format|
+          format.html { render :show }
+          format.json {render json: @item } 
+        end
     end
 
     def new
@@ -25,22 +36,28 @@ class ItemsController < ApplicationController
     end
     
     def edit
-        # @item = Item.find_by(id: params[:id])
     end
 
     def create
-        user = session[:user_id]
-    
-        @item = Item.new(item_params)
-        # @item.cart=current_cart
-        @item.user = current_user
+       
+        # --- 1st way-----
+        # user = session[:user_id]
+        # @item = Item.new(item_params)
+        # @item.user = current_user
+
+        # --- 2nd way-----
+        @item = current_user.items.build(item_params)
+        
         @category = Category.find_by(id: params[:item][:category_id])
-    
-        # @item.user_id = @user.id
-        if @item.save
-            redirect_to item_path(@item) # new_item_path
-        else
-            redirect_to new_item_path
+
+        respond_to do |format|
+            if @item.save
+                format.html { redirect_to @item, notice: 'Item was successfully created.'}
+                format.json { render :show, status: :created, location: @item}
+            else
+                format.html { redirect_to new_item_path }
+                format.json { render json: @item.errors, status: :unprocessable_entity }
+            end
         end
     end
 
@@ -56,9 +73,6 @@ class ItemsController < ApplicationController
 
         @cart.push(item) if Item.exists?(item.id)
         redirect_to items_path
-
-        # @cart.clear if current_user.nil?
-        # redirect_to root_path
     end
 
  
@@ -72,6 +86,9 @@ class ItemsController < ApplicationController
               render 'edit'
         end
     end
+    
+   
+
 
     def remove_item_from(cart)
         @cart.delete_at(item)
@@ -80,8 +97,7 @@ class ItemsController < ApplicationController
     def destroy
         @item = Item.find_by(id: params[:id])
         @item.destroy
-        redirect_to items_path
-
+        redirect_to stock_report_path
     end
 
     private

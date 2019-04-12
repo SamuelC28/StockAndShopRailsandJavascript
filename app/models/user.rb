@@ -4,7 +4,7 @@ class User < ApplicationRecord
     validates :email, uniqueness: true, :case_sensitive => false #, message: 'has already taken, choice not avaible!'
   
     has_many :items
-    has_one :cart
+    # has_one :cart
     # has_many :categories 
 
 
