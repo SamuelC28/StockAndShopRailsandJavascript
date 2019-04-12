@@ -1,7 +1,7 @@
 class ItemSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :photo_url, :item_name, :unit_price, :tax, :quantity, :isbn, :desc
+  attributes :id, :photo, :item_name, :unit_price, :tax, :quantity, :isbn, :desc
   # belongs_to :category#, serializer: CategorizationSerializer
   has_many :categorizations
     has_many :categories, :through => :categorizations

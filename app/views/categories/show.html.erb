@@ -2,9 +2,5 @@
 <br><br><br>
 <h1> Category Name: <%= @category.category_name %></h2>
 
-<h4> Category "<%= @category.category_name %>" has been  added!</h4>
-
-<%= render partial: "items/form"%>
-
 <%= link_to 'View Full Detail of item', item_path(@category, @item) %>
 

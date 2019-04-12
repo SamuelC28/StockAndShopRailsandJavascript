@@ -5,6 +5,11 @@ class CategoriesController < ApplicationController
         @user_id = session[:id]
         @categories = Category.all
         @items = Item.all 
+        
+        respond_to do |format|
+            format.html { render :index }
+            format.json {render json: @categories }
+        end
     end
 
     def show
