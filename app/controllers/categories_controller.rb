@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
         @items = Item.all 
         
         respond_to do |format|
-            format.html { render :index }
+            format.html {render :index }
             format.json {render json: @categories }
         end
     end
@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
         @item = Item.new
         
         respond_to do |format|
-            format.html { render :show }
+            format.html {render :show }
             format.json {render json: @category } 
           end
     end

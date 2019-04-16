@@ -28,24 +28,9 @@ class Item < ApplicationRecord
     CONDTION = %w{ BALLY BB Quallity }
 
 
-
-    # def not_referenced_any_line_item
-    #   unless line_items.empty?
-    #     errors.add(:base, "Line is not present")
-    #     throw :abort
-    #   end
-
-    # end
- 
-    
-
-  #  def sub_total
-  #   sum = 0
-  #   self.line_items.each do |line_item|
-  #     sum+= line_item.total_price
-  #   end
-  #   return sum
-  # end
+    def photo?
+      errors.add(:base, 'Please upload an image for yout product!') unless photo.attached?
+    end
 
   
 end

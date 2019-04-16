@@ -1,5 +1,7 @@
 {
   "name": "stock-inventory",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "handlebars": "^4.1.2"
+  }
 }

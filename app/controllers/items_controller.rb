@@ -9,7 +9,11 @@ class ItemsController < ApplicationController
         @category = Category.find_by(id: params[:id])
         # @items = Item.find_by(id: @category_id).items
         @items = Item.all 
-        
+
+        # respond_to do |format|
+        #     format.html { render :index}
+        #     format.json {renderj json: @items}
+        # end
     end
     
     def ticket
@@ -19,7 +23,7 @@ class ItemsController < ApplicationController
     def show
         @user= User.find_by(id: session[:id])
         @category = Category.find_by(id: params[:id])
-        @item = Item.find_by(id: params[:id])
+        # @item = Item.find_by(id: params[:id])
         
         @address = Address.find_by(id: params[:id])
         @category = Category.new
@@ -44,15 +48,21 @@ class ItemsController < ApplicationController
         # user = session[:user_id]
         # @item = Item.new(item_params)
         # @item.user = current_user
-
+        puts params.inspect
         # --- 2nd way-----
         @item = current_user.items.build(item_params)
+        # photoname= params[:item][:photo].filename
+        # photofile= params[:item][:photo][:tempfile]
+
+        # File.open("./public/#{photoname}","wb") do |f|
+        #     f.write(photofile.read)
+        # end
         
         @category = Category.find_by(id: params[:item][:category_id])
 
         respond_to do |format|
             if @item.save
-                format.html { redirect_to @item, notice: 'Item was successfully created.'}
+                format.html { redirect_to item_path(@item), notice: 'Item was successfully created.'}
                 format.json { render :show, status: :created, location: @item}
             else
                 format.html { redirect_to new_item_path }

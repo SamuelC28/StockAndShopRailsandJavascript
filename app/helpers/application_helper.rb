@@ -29,14 +29,5 @@ module ApplicationHelper
       total
     end
     
-    def clear_cart(cart)
-      # cart.delete
-    end
-    # def selected_items(cart)
-    #   cart.each do |item|
 
-    # end
-    # def remove_item_from(cart)
-    #   cart.delete_at(cart)
-    # end
 end
